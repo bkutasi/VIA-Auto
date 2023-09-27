@@ -10,6 +10,15 @@ This project is a backend implementation that automates the annotation function 
 - **Client side**: VIA run entirely on the clients browser. This makes deployment very easily manageable with serverless architecture. An inference server is needed for VIA-Auto to work.
   
 ## Getting Started
+
+### Please use Docker
+```
+docker pull tensorflow/tensorflow:latest-gpu-jupyter
+```
+
+```
+docker run -it --rm -v $(realpath ~/notebooks):/tf/notebooks -p 8888:8888 tensorflow/tensorflow:latest-gpu-jupyter
+```
 To get started with this project, clone the repository and install the necessary dependencies.
 
 Clone this repo
