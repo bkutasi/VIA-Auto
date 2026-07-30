@@ -3,7 +3,7 @@ name = "via-auto"
 version = "0.1.0"
 description = "Automated VGG Image Annotator (VIA) backend using a trained neural network for inference."
 readme = "README.md"
-license = { text = "GPL-3.0" }
+license = "GPL-3.0-only"
 requires-python = ">=3.11"
 dependencies = [
     "numpy",
@@ -12,10 +12,9 @@ dependencies = [
     "scikit-learn",
     "pillow",
     "matplotlib",
-    "jupyter",
-    "ipykernel",
 ]
 
 [project.optional-dependencies]
 tensorflow = ["tensorflow"]
-pytorch = ["torch", "torchvision"]
+pytorch = ["torch"]
+dev = ["jupyter", "ipykernel"]
