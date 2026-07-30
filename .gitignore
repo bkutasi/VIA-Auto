@@ -18,7 +18,6 @@ datasets/test/
 *.keras
 *.pt
 model/
-model_best.pt
 curves.png
 curves_pytorch.png
 

@@ -13,18 +13,16 @@ This project is a backend implementation that automates the annotation function 
 
 ### Using Docker
 
-A Dockerfile is provided based on the NVIDIA TensorFlow container:
+A Dockerfile is provided with Python 3.12 and PyTorch:
 
 ```bash
 docker build -t via-auto .
-docker run -it --rm --gpus all -v $(pwd):/workspace -w /workspace via-auto
+docker run -it --rm -p 8888:8888 via-auto
 ```
 
-Alternatively, pull the base image directly:
+This launches a Jupyter notebook server on port 8888. For GPU support, add `--gpus all`.
 
-```bash
-docker pull nvcr.io/nvidia/tensorflow:23.08-tf2-py3
-```
+For the TensorFlow variant, install with `uv sync --extra tensorflow` instead.
 
 ### Local setup (uv)
 
@@ -41,20 +39,31 @@ git clone --recurse-submodules https://github.com/bkutasi/VIA-Auto
 cd VIA-Auto
 ```
 
-Create a virtual environment and install dependencies (uv handles both):
+Install dependencies with the PyTorch stack (default):
 
 ```bash
-uv sync
+uv sync --extra pytorch
+```
+
+Or with TensorFlow:
+
+```bash
+uv sync --extra tensorflow
 ```
 
 This creates a `.venv/` with all dependencies locked in `uv.lock`. Activate it with `source .venv/bin/activate` or run commands directly via `uv run` (e.g. `uv run jupyter notebook`).
 
 ### Training
 
-See `notebooks/simplified_model_training_showcase.ipynb` for a walkthrough of training a U-Net model on the heart slices dataset. Update the data path in the notebook to point to your local copy of the dataset.
+Two notebooks are provided:
+
+- `notebooks/pytorch_training_showcase.ipynb` — recommended, optimized PyTorch implementation with mixed precision, proper IoU metric, and 3-way data split
+- `notebooks/simplified_model_training_showcase.ipynb` — original TensorFlow/Keras implementation
+
+Update the data path in either notebook to point to your local copy of the dataset.
 
 ## Contributing
-Contributions are welcome! Please read our contributing guidelines before starting.
+Contributions are welcome! Feel free to open issues or pull requests.
 
 ## Disclaimer
 Since the original dataset seen in the demo was produced by [SOTE](https://semmelweis.hu/english/) researchers I wont release it. The documentation will contain everything you need to train your datasets besides bundled ones that are coming later.
