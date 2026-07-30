@@ -26,27 +26,28 @@ Alternatively, pull the base image directly:
 docker pull nvcr.io/nvidia/tensorflow:23.08-tf2-py3
 ```
 
-### Using a virtual environment
+### Local setup (uv)
+
+[uv](https://docs.astral.sh/uv/) is used for dependency management. Install it if you don't have it:
+
+```bash
+curl -LsSf https://astral.sh/uv/install.sh | sh
+```
 
 Clone this repo (with submodules):
 
 ```bash
 git clone --recurse-submodules https://github.com/bkutasi/VIA-Auto
+cd VIA-Auto
 ```
 
-Create and activate a virtual environment:
+Create a virtual environment and install dependencies (uv handles both):
 
 ```bash
-python3 -m venv env
-source env/bin/activate  # Linux/macOS
-# .\env\Scripts\activate  # Windows
+uv sync
 ```
 
-Install dependencies:
-
-```bash
-pip install -r requirements.txt
-```
+This creates a `.venv/` with all dependencies locked in `uv.lock`. Activate it with `source .venv/bin/activate` or run commands directly via `uv run` (e.g. `uv run jupyter notebook`).
 
 ### Training
 
