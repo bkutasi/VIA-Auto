@@ -11,34 +11,47 @@ This project is a backend implementation that automates the annotation function 
   
 ## Getting Started
 
-### Please use Docker
-```
-docker pull tensorflow/tensorflow:latest-gpu-jupyter
-```
+### Using Docker
 
-```
-docker run -it --rm -v $(realpath ~/notebooks):/tf/notebooks -p 8888:8888 tensorflow/tensorflow:latest-gpu-jupyter
-```
-To get started with this project, clone the repository and install the necessary dependencies.
+A Dockerfile is provided based on the NVIDIA TensorFlow container:
 
-Clone this repo
 ```bash
-git clone https://github.com/bkutasi/VIA-Auto
+docker build -t via-auto .
+docker run -it --rm --gpus all -v $(pwd):/workspace -w /workspace via-auto
 ```
-Create an environment folder.
+
+Alternatively, pull the base image directly:
+
+```bash
+docker pull nvcr.io/nvidia/tensorflow:23.08-tf2-py3
+```
+
+### Using a virtual environment
+
+Clone this repo (with submodules):
+
+```bash
+git clone --recurse-submodules https://github.com/bkutasi/VIA-Auto
+```
+
+Create and activate a virtual environment:
+
 ```bash
 python3 -m venv env
+source env/bin/activate  # Linux/macOS
+# .\env\Scripts\activate  # Windows
 ```
 
-Activate it
-```bash
-.\env\Scripts\activate
-```
+Install dependencies:
 
-Install dependencies
 ```bash
 pip install -r requirements.txt
 ```
+
+### Training
+
+See `notebooks/simplified_model_training_showcase.ipynb` for a walkthrough of training a U-Net model on the heart slices dataset. Update the data path in the notebook to point to your local copy of the dataset.
+
 ## Contributing
 Contributions are welcome! Please read our contributing guidelines before starting.
 

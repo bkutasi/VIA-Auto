@@ -1,2 +1,29 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+*.egg
+
+# Virtual environments
 env/
+venv/
+.venv/
+
+# Datasets (large, not tracked)
 datasets/heartslices_dataset/
+datasets/test/
+
+# Trained models / outputs
+*.h5
+*.keras
+model/
+curves.png
+
+# IDE / OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# Jupyter
+.ipynb_checkpoints/
