@@ -6,7 +6,6 @@ readme = "README.md"
 license = { text = "GPL-3.0" }
 requires-python = ">=3.11"
 dependencies = [
-    "tensorflow",
     "numpy",
     "opencv-python-headless",
     "scikit-image",
@@ -16,3 +15,7 @@ dependencies = [
     "jupyter",
     "ipykernel",
 ]
+
+[project.optional-dependencies]
+tensorflow = ["tensorflow"]
+pytorch = ["torch", "torchvision"]

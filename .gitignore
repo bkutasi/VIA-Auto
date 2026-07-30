@@ -16,8 +16,11 @@ datasets/test/
 # Trained models / outputs
 *.h5
 *.keras
+*.pt
 model/
+model_best.pt
 curves.png
+curves_pytorch.png
 
 # IDE / OS
 .vscode/
