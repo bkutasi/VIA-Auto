@@ -12,23 +12,9 @@ This project is a backend implementation that automates the annotation function 
 ## Prerequisites
 - Python 3.11+
 - For GPU training: an NVIDIA GPU with CUDA support
-- For the PyTorch notebook: mixed precision (AMP) requires a CUDA-capable GPU
+- The PyTorch notebook runs on CPU and enables mixed precision automatically when CUDA is available.
 
 ## Getting Started
-
-### Using Docker
-
-A Dockerfile is provided with Python 3.12 and PyTorch (CPU). For GPU, use `--gpus all` with an NVIDIA Container Toolkit-equipped Docker:
-
-```bash
-docker build -t via-auto .
-docker run -it --rm -p 8888:8888 via-auto          # CPU
-docker run -it --rm --gpus all -p 8888:8888 via-auto  # GPU
-```
-
-This launches a Jupyter notebook server on port 8888.
-
-For the TensorFlow variant, modify the Dockerfile to use `--extra tensorflow` instead.
 
 ### Local setup (uv)
 
